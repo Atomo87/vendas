@@ -1,0 +1,377 @@
+object frmPrincipal: TfrmPrincipal
+  Left = 0
+  Top = 0
+  Caption = 'Menu Principal'
+  ClientHeight = 747
+  ClientWidth = 1436
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  Menu = mainPrincipal
+  OldCreateOrder = False
+  WindowState = wsMaximized
+  OnActivate = FormActivate
+  OnClose = FormClose
+  OnCreate = FormCreate
+  OnShow = FormShow
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Splitter1: TSplitter
+    Left = 530
+    Top = 41
+    Height = 687
+    ExplicitLeft = 432
+    ExplicitTop = 272
+    ExplicitHeight = 100
+  end
+  object StbPrincipal: TStatusBar
+    Left = 0
+    Top = 728
+    Width = 1436
+    Height = 19
+    Panels = <
+      item
+        Width = 150
+      end>
+  end
+  object pnlDashBoard: TPanel
+    Left = 0
+    Top = 0
+    Width = 1436
+    Height = 41
+    Align = alTop
+    Alignment = taLeftJustify
+    Caption = 'Dashboard'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -21
+    Font.Name = 'Tahoma'
+    Font.Style = [fsBold]
+    ParentFont = False
+    TabOrder = 1
+    OnClick = pnlDashBoardClick
+  end
+  object PnlDireita: TPanel
+    Left = 0
+    Top = 41
+    Width = 530
+    Height = 687
+    Align = alLeft
+    TabOrder = 2
+    object Splitter2: TSplitter
+      Left = 1
+      Top = 283
+      Width = 528
+      Height = 3
+      Cursor = crVSplit
+      Align = alTop
+      ExplicitTop = 313
+      ExplicitWidth = 266
+    end
+    object pnlProdutoEstoque: TPanel
+      Left = 1
+      Top = 1
+      Width = 528
+      Height = 282
+      Align = alTop
+      TabOrder = 0
+      object DBChart1: TDBChart
+        Left = 1
+        Top = 1
+        Width = 526
+        Height = 280
+        Title.Text.Strings = (
+          'Produdo em Estoque')
+        Align = alClient
+        TabOrder = 0
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        DefaultCanvas = 'TGDIPlusCanvas'
+        PrintMargins = (
+          15
+          24
+          15
+          24)
+        ColorPaletteIndex = 13
+        object Series1: TBarSeries
+          Marks.Frame.Visible = False
+          DataSource = DTMGrafico.QryProdutoEstoque
+          Title = 'ProdutosEstoque'
+          XLabelsSource = 'Label'
+          XValues.Name = 'X'
+          XValues.Order = loAscending
+          YValues.Name = 'Bar'
+          YValues.Order = loNone
+          YValues.ValueSource = 'Value'
+        end
+      end
+    end
+    object pnlVendasDaUltimaSemana: TPanel
+      Left = 1
+      Top = 286
+      Width = 528
+      Height = 400
+      Align = alClient
+      TabOrder = 1
+      object DBChart4: TDBChart
+        Left = 1
+        Top = 1
+        Width = 526
+        Height = 398
+        Title.Text.Strings = (
+          'Vendas da '#218'ltima Semana')
+        Legend.DividingLines.Visible = True
+        Align = alClient
+        TabOrder = 0
+        DefaultCanvas = 'TGDIPlusCanvas'
+        ColorPaletteIndex = 13
+        object Series4: TFastLineSeries
+          DataSource = DTMGrafico.QryVendasUltimasSemana
+          Title = 'VendasUltimaSemana'
+          XLabelsSource = 'Label'
+          LinePen.Color = 10708548
+          XValues.Name = 'X'
+          XValues.Order = loAscending
+          YValues.Name = 'Y'
+          YValues.Order = loNone
+          YValues.ValueSource = 'Value'
+        end
+      end
+    end
+  end
+  object pnlEsquerda: TPanel
+    Left = 533
+    Top = 41
+    Width = 903
+    Height = 687
+    Align = alClient
+    TabOrder = 3
+    object Splitter3: TSplitter
+      Left = 1
+      Top = 283
+      Width = 901
+      Height = 3
+      Cursor = crVSplit
+      Align = alTop
+      ExplicitWidth = 296
+    end
+    object pnlVendaPorClienteUltimaSemana: TPanel
+      Left = 1
+      Top = 1
+      Width = 901
+      Height = 282
+      Align = alTop
+      TabOrder = 0
+      object DBChart2: TDBChart
+        Left = 1
+        Top = 1
+        Width = 899
+        Height = 280
+        Title.Text.Strings = (
+          'Valor de Venda por Cliente na '#218'ltima Semana')
+        Legend.TextStyle = ltsLeftPercent
+        View3DOptions.Elevation = 315
+        View3DOptions.Orthogonal = False
+        View3DOptions.Perspective = 0
+        View3DOptions.Rotation = 360
+        Align = alClient
+        TabOrder = 0
+        DefaultCanvas = 'TGDIPlusCanvas'
+        ColorPaletteIndex = 13
+        object Series2: TPieSeries
+          DataSource = DTMGrafico.QryValorVendaPorCliente
+          Title = 'VendasPorCliente'
+          XLabelsSource = 'Label'
+          XValues.Order = loAscending
+          YValues.Name = 'Pie'
+          YValues.Order = loNone
+          YValues.ValueSource = 'Value'
+          Frame.InnerBrush.BackColor = clRed
+          Frame.InnerBrush.Gradient.EndColor = clGray
+          Frame.InnerBrush.Gradient.MidColor = clWhite
+          Frame.InnerBrush.Gradient.StartColor = 4210752
+          Frame.InnerBrush.Gradient.Visible = True
+          Frame.MiddleBrush.BackColor = clYellow
+          Frame.MiddleBrush.Gradient.EndColor = 8553090
+          Frame.MiddleBrush.Gradient.MidColor = clWhite
+          Frame.MiddleBrush.Gradient.StartColor = clGray
+          Frame.MiddleBrush.Gradient.Visible = True
+          Frame.OuterBrush.BackColor = clGreen
+          Frame.OuterBrush.Gradient.EndColor = 4210752
+          Frame.OuterBrush.Gradient.MidColor = clWhite
+          Frame.OuterBrush.Gradient.StartColor = clSilver
+          Frame.OuterBrush.Gradient.Visible = True
+          Frame.Width = 4
+          OtherSlice.Legend.Visible = False
+        end
+      end
+    end
+    object pnl10ProdutosMaisVendidos: TPanel
+      Left = 1
+      Top = 286
+      Width = 901
+      Height = 400
+      Align = alClient
+      TabOrder = 1
+      object DBChart3: TDBChart
+        Left = 1
+        Top = 1
+        Width = 899
+        Height = 398
+        Title.Text.Strings = (
+          'Os 10 Produtos Mais Vendidos')
+        Legend.TextStyle = ltsLeftPercent
+        View3DOptions.Elevation = 315
+        View3DOptions.Orthogonal = False
+        View3DOptions.Perspective = 0
+        View3DOptions.Rotation = 360
+        Align = alClient
+        TabOrder = 0
+        DefaultCanvas = 'TGDIPlusCanvas'
+        ColorPaletteIndex = 13
+        object Series3: TPieSeries
+          DataSource = DTMGrafico.Qry10ProdutosMaisVendidos
+          Title = 'ProdutosMaisVendidos'
+          XLabelsSource = 'Label'
+          XValues.Order = loAscending
+          YValues.Name = 'Pie'
+          YValues.Order = loNone
+          YValues.ValueSource = 'Value'
+          Frame.InnerBrush.BackColor = clRed
+          Frame.InnerBrush.Gradient.EndColor = clGray
+          Frame.InnerBrush.Gradient.MidColor = clWhite
+          Frame.InnerBrush.Gradient.StartColor = 4210752
+          Frame.InnerBrush.Gradient.Visible = True
+          Frame.MiddleBrush.BackColor = clYellow
+          Frame.MiddleBrush.Gradient.EndColor = 8553090
+          Frame.MiddleBrush.Gradient.MidColor = clWhite
+          Frame.MiddleBrush.Gradient.StartColor = clGray
+          Frame.MiddleBrush.Gradient.Visible = True
+          Frame.OuterBrush.BackColor = clGreen
+          Frame.OuterBrush.Gradient.EndColor = 4210752
+          Frame.OuterBrush.Gradient.MidColor = clWhite
+          Frame.OuterBrush.Gradient.StartColor = clSilver
+          Frame.OuterBrush.Gradient.Visible = True
+          Frame.Width = 4
+          OtherSlice.Legend.Visible = False
+        end
+      end
+    end
+  end
+  object mainPrincipal: TMainMenu
+    Left = 848
+    Top = 104
+    object CADASTRO1: TMenuItem
+      Caption = 'CADASTRO'
+      object CLIENTE1: TMenuItem
+        Caption = 'CLIENTE'
+        OnClick = CLIENTE1Click
+      end
+      object N1: TMenuItem
+        Caption = '-'
+      end
+      object CATEGORIA1: TMenuItem
+        Caption = 'CATEGORIA'
+        OnClick = CATEGORIA1Click
+      end
+      object PRODUTO1: TMenuItem
+        Caption = 'PRODUTO'
+        OnClick = PRODUTO1Click
+      end
+      object N2: TMenuItem
+        Caption = '-'
+      end
+      object USURIO1: TMenuItem
+        Caption = 'USU'#193'RIO'
+        OnClick = USURIO1Click
+      end
+      object AOACESSO1: TMenuItem
+        Caption = 'A'#199#195'O ACESSO'
+        OnClick = AOACESSO1Click
+      end
+      object N7: TMenuItem
+        Caption = '-'
+      end
+      object USURIOSVSAES1: TMenuItem
+        Caption = 'USU'#193'RIOS VS A'#199#213'ES'
+        OnClick = USURIOSVSAES1Click
+      end
+      object N6: TMenuItem
+        Caption = '-'
+      end
+      object ALTERARSENHA1: TMenuItem
+        Caption = 'ALTERAR SENHA'
+        OnClick = ALTERARSENHA1Click
+      end
+      object N5: TMenuItem
+        Caption = '-'
+      end
+      object mnuFechar: TMenuItem
+        Caption = 'FECHAR'
+        OnClick = mnuFecharClick
+      end
+    end
+    object N8: TMenuItem
+      Caption = '|'
+    end
+    object MOVIMENTAO1: TMenuItem
+      Caption = 'MOVIMENTA'#199#195'O'
+      object VENDA1: TMenuItem
+        Caption = 'VENDA'
+        OnClick = VENDA1Click
+      end
+    end
+    object N9: TMenuItem
+      Caption = '|'
+    end
+    object RELATRIOS1: TMenuItem
+      Caption = 'RELAT'#211'RIOS'
+      object CATEGORIA2: TMenuItem
+        Caption = 'CATEGORIA'
+        OnClick = CATEGORIA2Click
+      end
+      object CLIENTE2: TMenuItem
+        Caption = 'CLIENTE'
+        OnClick = CLIENTE2Click
+      end
+      object FICHADECLIENTE1: TMenuItem
+        Caption = 'FICHA DE CLIENTE'
+        OnClick = FICHADECLIENTE1Click
+      end
+      object N3: TMenuItem
+        Caption = '-'
+      end
+      object PRODUTO2: TMenuItem
+        Caption = 'PRODUTO'
+        OnClick = PRODUTO2Click
+      end
+      object PRODUTOSPORCATEGORIA1: TMenuItem
+        Caption = 'PRODUTOS POR CATEGORIA'
+        OnClick = PRODUTOSPORCATEGORIA1Click
+      end
+      object N4: TMenuItem
+        Caption = '-'
+      end
+      object VENDAPORDATA1: TMenuItem
+        Caption = 'VENDA POR DATA'
+        OnClick = VENDAPORDATA1Click
+      end
+    end
+    object N10: TMenuItem
+      Caption = '|'
+    end
+    object SAIR1: TMenuItem
+      Caption = 'SAIR'
+      OnClick = SAIR1Click
+    end
+  end
+  object tmrAtualizacaoDashBoard: TTimer
+    Interval = 60000
+    OnTimer = tmrAtualizacaoDashBoardTimer
+    Left = 848
+    Top = 8
+  end
+end

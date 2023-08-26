@@ -1,0 +1,5 @@
+object dtmPrincipal: TdtmPrincipal
+  OldCreateOrder = False
+  Height = 161
+  Width = 692
+end

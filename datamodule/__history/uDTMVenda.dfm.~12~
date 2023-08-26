@@ -1,0 +1,47 @@
+object dtmVendas: TdtmVendas
+  OldCreateOrder = False
+  OnCreate = DataModuleCreate
+  OnDestroy = DataModuleDestroy
+  Height = 188
+  Width = 361
+  object cdsItensVenda: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    Left = 256
+    Top = 24
+    object cdsItensVendaprodutoId: TIntegerField
+      DisplayLabel = 'C'#243'digo'
+      FieldName = 'produtoId'
+    end
+    object cdsItensVendaNomeProduto: TStringField
+      DisplayLabel = 'Nome do Produto'
+      FieldName = 'NomeProduto'
+      Size = 60
+    end
+    object cdsItensVendaquantidade: TFloatField
+      DisplayLabel = 'Quantidade'
+      FieldName = 'quantidade'
+    end
+    object cdsItensVendavalorUnitario: TFloatField
+      DisplayLabel = 'Valor Unit'#225'rio'
+      FieldName = 'valorUnitario'
+    end
+    object cdsItensVendavalorTotalProduto: TFloatField
+      DisplayLabel = 'Total do Produto'
+      FieldName = 'valorTotalProduto'
+    end
+  end
+  object dtsItensVenda: TDataSource
+    DataSet = cdsItensVenda
+    Left = 256
+    Top = 80
+  end
+  object dtsCliente: TDataSource
+    Left = 56
+    Top = 88
+  end
+  object dtsProdutos: TDataSource
+    Left = 160
+    Top = 88
+  end
+end

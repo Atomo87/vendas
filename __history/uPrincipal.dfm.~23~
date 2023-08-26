@@ -1,0 +1,509 @@
+object frmPrincipal: TfrmPrincipal
+  Left = 0
+  Top = 0
+  Caption = 'Menu Principal'
+  ClientHeight = 747
+  ClientWidth = 1436
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  Menu = mainPrincipal
+  OldCreateOrder = False
+  WindowState = wsMaximized
+  OnActivate = FormActivate
+  OnClose = FormClose
+  OnCreate = FormCreate
+  OnShow = FormShow
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Splitter1: TSplitter
+    Left = 530
+    Top = 41
+    Height = 687
+    ExplicitLeft = 432
+    ExplicitTop = 272
+    ExplicitHeight = 100
+  end
+  object StbPrincipal: TStatusBar
+    Left = 0
+    Top = 728
+    Width = 1436
+    Height = 19
+    Panels = <
+      item
+        Width = 150
+      end>
+  end
+  object pnlDashBoard: TPanel
+    Left = 0
+    Top = 0
+    Width = 1436
+    Height = 41
+    Align = alTop
+    Alignment = taLeftJustify
+    Caption = 'Dashboard'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -21
+    Font.Name = 'Tahoma'
+    Font.Style = [fsBold]
+    ParentFont = False
+    TabOrder = 1
+    OnClick = pnlDashBoardClick
+  end
+  object PnlDireita: TPanel
+    Left = 0
+    Top = 41
+    Width = 530
+    Height = 687
+    Align = alLeft
+    TabOrder = 2
+    object Splitter2: TSplitter
+      Left = 1
+      Top = 283
+      Width = 528
+      Height = 3
+      Cursor = crVSplit
+      Align = alTop
+      ExplicitTop = 313
+      ExplicitWidth = 266
+    end
+    object pnlProdutoEstoque: TPanel
+      Left = 1
+      Top = 1
+      Width = 528
+      Height = 282
+      Align = alTop
+      TabOrder = 0
+      object DBChart1: TDBChart
+        Left = 1
+        Top = 1
+        Width = 526
+        Height = 280
+        Title.Text.Strings = (
+          'Produdo em Estoque')
+        Align = alClient
+        TabOrder = 0
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        DefaultCanvas = 'TGDIPlusCanvas'
+        PrintMargins = (
+          15
+          24
+          15
+          24)
+        ColorPaletteIndex = 13
+        object Series1: TBarSeries
+          Marks.Frame.Visible = False
+          DataSource = DTMGrafico.QryProdutoEstoque
+          Title = 'ProdutosEstoque'
+          XLabelsSource = 'Label'
+          XValues.Name = 'X'
+          XValues.Order = loAscending
+          YValues.Name = 'Bar'
+          YValues.Order = loNone
+          YValues.ValueSource = 'Value'
+        end
+      end
+    end
+    object pnlVendasDaUltimaSemana: TPanel
+      Left = 1
+      Top = 286
+      Width = 528
+      Height = 400
+      Align = alClient
+      TabOrder = 1
+      object DBChart4: TDBChart
+        Left = 1
+        Top = 1
+        Width = 526
+        Height = 398
+        Title.Text.Strings = (
+          'Vendas da '#218'ltima Semana')
+        Legend.DividingLines.Visible = True
+        Align = alClient
+        TabOrder = 0
+        DefaultCanvas = 'TGDIPlusCanvas'
+        ColorPaletteIndex = 13
+        object Series4: TFastLineSeries
+          Marks.Visible = True
+          DataSource = DTMGrafico.QryVendasUltimasSemana
+          Title = 'VendasUltimaSemana'
+          XLabelsSource = 'Label'
+          LinePen.Color = 10708548
+          XValues.Name = 'X'
+          XValues.Order = loAscending
+          YValues.Name = 'Y'
+          YValues.Order = loNone
+          YValues.ValueSource = 'Value'
+        end
+      end
+    end
+  end
+  object pnlEsquerda: TPanel
+    Left = 533
+    Top = 41
+    Width = 903
+    Height = 687
+    Align = alClient
+    TabOrder = 3
+    object Splitter3: TSplitter
+      Left = 1
+      Top = 283
+      Width = 901
+      Height = 3
+      Cursor = crVSplit
+      Align = alTop
+      ExplicitWidth = 296
+    end
+    object pnlVendaPorClienteUltimaSemana: TPanel
+      Left = 1
+      Top = 1
+      Width = 901
+      Height = 282
+      Align = alTop
+      TabOrder = 0
+      object DBChart2: TDBChart
+        Left = 1
+        Top = 1
+        Width = 899
+        Height = 280
+        Title.Text.Strings = (
+          'Valor de Venda por Cliente na '#218'ltima Semana')
+        Legend.TextStyle = ltsLeftPercent
+        View3DOptions.Elevation = 315
+        View3DOptions.Orthogonal = False
+        View3DOptions.Perspective = 0
+        View3DOptions.Rotation = 360
+        Align = alClient
+        TabOrder = 0
+        DefaultCanvas = 'TGDIPlusCanvas'
+        ColorPaletteIndex = 13
+        object Series2: TPieSeries
+          DataSource = DTMGrafico.QryValorVendaPorCliente
+          Title = 'VendasPorCliente'
+          XLabelsSource = 'Label'
+          XValues.Order = loAscending
+          YValues.Name = 'Pie'
+          YValues.Order = loNone
+          YValues.ValueSource = 'Value'
+          Frame.InnerBrush.BackColor = clRed
+          Frame.InnerBrush.Gradient.EndColor = clGray
+          Frame.InnerBrush.Gradient.MidColor = clWhite
+          Frame.InnerBrush.Gradient.StartColor = 4210752
+          Frame.InnerBrush.Gradient.Visible = True
+          Frame.MiddleBrush.BackColor = clYellow
+          Frame.MiddleBrush.Gradient.EndColor = 8553090
+          Frame.MiddleBrush.Gradient.MidColor = clWhite
+          Frame.MiddleBrush.Gradient.StartColor = clGray
+          Frame.MiddleBrush.Gradient.Visible = True
+          Frame.OuterBrush.BackColor = clGreen
+          Frame.OuterBrush.Gradient.EndColor = 4210752
+          Frame.OuterBrush.Gradient.MidColor = clWhite
+          Frame.OuterBrush.Gradient.StartColor = clSilver
+          Frame.OuterBrush.Gradient.Visible = True
+          Frame.Width = 4
+          OtherSlice.Legend.Visible = False
+        end
+      end
+    end
+    object pnl10ProdutosMaisVendidos: TPanel
+      Left = 1
+      Top = 286
+      Width = 901
+      Height = 400
+      Align = alClient
+      TabOrder = 1
+      object DBChart3: TDBChart
+        Left = 1
+        Top = 1
+        Width = 899
+        Height = 398
+        Title.Text.Strings = (
+          'Os 10 Produtos Mais Vendidos')
+        Legend.TextStyle = ltsLeftPercent
+        View3DOptions.Elevation = 315
+        View3DOptions.Orthogonal = False
+        View3DOptions.Perspective = 0
+        View3DOptions.Rotation = 360
+        Align = alClient
+        TabOrder = 0
+        DefaultCanvas = 'TGDIPlusCanvas'
+        ColorPaletteIndex = 13
+        object Series3: TPieSeries
+          DataSource = DTMGrafico.Qry10ProdutosMaisVendidos
+          Title = 'ProdutosMaisVendidos'
+          XLabelsSource = 'Label'
+          XValues.Order = loAscending
+          YValues.Name = 'Pie'
+          YValues.Order = loNone
+          YValues.ValueSource = 'Value'
+          Frame.InnerBrush.BackColor = clRed
+          Frame.InnerBrush.Gradient.EndColor = clGray
+          Frame.InnerBrush.Gradient.MidColor = clWhite
+          Frame.InnerBrush.Gradient.StartColor = 4210752
+          Frame.InnerBrush.Gradient.Visible = True
+          Frame.MiddleBrush.BackColor = clYellow
+          Frame.MiddleBrush.Gradient.EndColor = 8553090
+          Frame.MiddleBrush.Gradient.MidColor = clWhite
+          Frame.MiddleBrush.Gradient.StartColor = clGray
+          Frame.MiddleBrush.Gradient.Visible = True
+          Frame.OuterBrush.BackColor = clGreen
+          Frame.OuterBrush.Gradient.EndColor = 4210752
+          Frame.OuterBrush.Gradient.MidColor = clWhite
+          Frame.OuterBrush.Gradient.StartColor = clSilver
+          Frame.OuterBrush.Gradient.Visible = True
+          Frame.Width = 4
+          OtherSlice.Legend.Visible = False
+        end
+      end
+    end
+  end
+  object mainPrincipal: TMainMenu
+    Left = 848
+    Top = 104
+    object CADASTRO1: TMenuItem
+      Caption = 'CADASTRO'
+      object CLIENTE1: TMenuItem
+        Bitmap.Data = {
+          36100000424D3610000000000000360000002800000020000000200000000100
+          2000000000000010000000000000000000000000000000000000000000000000
+          000000000000020202030606060A0B0B0B120F0F0F1815151522181818251E1E
+          1E2F232323372323233723232337232323372323233723232337232323372323
+          2337232323372323233723232337222222361B1B1B2A171717251414141F0E0E
+          0E160909090F0505050801010102000000000000000000000000000000000000
+          00000606060A3B3B3B5B61616198747474B57D7D7DC4878787D38B8B8BD88F8E
+          8EE0969185E79B8E77E79D8E6BE8A18D64E9A38C5FEAA48C5DEAA48C5DEAA28C
+          5FEAA18D65E99C8E70E8988F7FE7939290E58D8D8DDB898989D7848484CF7B7B
+          7BC16F6F6FAD5959598C2727273D010101020000000000000000000000000000
+          0000030303041E1E1E2E353535534545456B6661549C95835DDEAA8D53F7B48F
+          43FEB89140FFBA9342FFBC9443FFBD9545FFBE9645FFBF9646FFBF9646FFBE96
+          45FFBD9545FFBC9443FFBA9342FFB79042FEAD9053F8988761E268645BA04F4F
+          4F7B414141653030304A1212121C2B210C425F4A1F871511081C000000000000
+          000000000000000000003429104E846829C3AF8939FEB38D3CFFB68F3EFFB991
+          41FFBB9343FFBD9545FFBF9746FFC19848FFC29949FFC29A49FFC29A49FFC299
+          49FFC19848FFBF9746FFBD9545FFBB9343FFB99141FFB68F3EFFB28A3AFC7B60
+          28B2261E0C37000000004A391473AC8636FEBE9545FF604C2679000000000000
+          000002020004755A23B0AC8635FFB08938FFB38C3BFFB68F3EFFB99141FFBB94
+          43FFBE9645FFC09848FFC29A49FFC49B4BFFC69C4CFFC79D4DFFC79D4DFFC69C
+          4CFFC49B4BFFC29A49FFC09847FFBE9645FFBB9443FFB99140FFB68F3EFFB38C
+          3BFFAE8838FE7A5E24B9AA8534FDBB9343FFD1AA5DFF3C311C46000000000000
+          00000F0C0417AA8534FFAE8837FFB18B3AFFB48E3DFFB89040FFBB9342FFBE96
+          45FFC09848FFC39A4AFFC69C4CFFC89E4EFFCA9F4FFFCAA050FFCAA050FFCA9F
+          4FFFC89E4EFFC69C4CFFC39A4AFFC09848FFBE9645FFBB9342FFB89040FFB48D
+          3DFFAE8837FFA98432FFB99141FFCCA455FF9A8151AC00000000000000000000
+          000003020004A88334F9AF8938FFB38C3BFFB68F3EFFB99241FFBD9544FFC097
+          47FFC39A4AFFC69D4DFFC99F4FFFCBA151FFCDA252FFCEA353FFCEA353FFCDA2
+          52FFCBA151FFC99F4FFFC69C4CFFC29B4CFFBC9E60FFB99E68FFB7995AFFB58F
+          3FFFAA8433FFB78F3FFFC89E4FFFB79A61CE0907040B00000000000000000000
+          000000000000826629C0B08A39FFB48D3CFFB7903FFFBB9342FFBE9646FFC299
+          49FFC59C4CFFC99E4FFFCCA151FFCEA354FFD0A555FFD2A657FFD2A657FFD0A5
+          55FFCEA354FFCCA151FFC3A773FFB8B4ACFFB6B6B6FFB6B6B6FFB6B6B6FFB5B1
+          A8FFB59A62FFC59C4BFFCDAB68E919140B1D0000000000000000000000000000
+          000000000000372B1151B18B39FFB58E3DFFB89140FFBC9443FFBF9747FFC39A
+          4AFFC79D4DFFCBA050FFCEA353FFD1A556FFD4A858FFD5A95AFFD5A95AFFD3A8
+          58FFD1A556FFC7AD7BFFBCBBBBFFBCBBBBFFBFB7A8FFC4B9A3FFBEB6A7FFBCBC
+          BCFFBCBBBBFFCCB482FF604D267F000000000000000000000000000000000000
+          0000000000000000000078602BA8B99446FFB99141FFBC9444FFC09847FFC49B
+          4BFFC89E4EFFCCA151FFCFA454FFD3A758FFD6AA5AFFD8AC5DFFD8AC5DFFD6AA
+          5AFFD2A95FFFC2BFBBFFC1C0BFFFCFBD9DFFDAC49BFFD8C195FFD7C195FFC7B6
+          94FFC1C0C0FFBEBBB5FD0F0D0A15000000000000000000000000000000000000
+          0000000000000000000004030106796231A4BE9A4DFFBC9544FFC09847FFC49B
+          4BFFC89E4EFFCCA151FFD0A455FFD3A858FFD7AB5BFFDAAE5EFFDAAD5EFFD7AB
+          5BFFCFB381FFC6C6C6FFCBC0ABFFDAC399FFD9C091FFD7BF90FFD6BF90FFD8C2
+          95FFC2B9A8FAC6C6C6FF3E3E3E4F000000000000000000000000000000000000
+          0000000000000000000000000000000000004B3D1E65B89851F2C19A4BFFC49B
+          4AFFC89E4EFFCCA151FFD1A759FFE3BE78FFF1CC8AFFF7D392FFF6D292FFEFCA
+          88FFD8C5A2FFCBCBCBFFD2C2A5FFD9C092FFD8C091FFD7BF91FFD7C397FCB5AC
+          95CA8181809BCBCBCBFF5C5C5C6E000000000000000000000000000000000000
+          000000000000000000000000000000000000000000001611081E89703CB1C59E
+          51FFC89F50FFE3C07BFFFBD89AFFFFD796FFFFD796FFFFD796FFFFD796FFFFD7
+          96FFECD5B0FFCECECEFFD6CAB2FFE0CDA7FFDAC396FFC0B08DDD8D887E969292
+          92928A8A8AA8D1D1D1FF5050505F000000000000000000000000000000000000
+          000000000000000000000000000000000000000000000000000000000000372B
+          1548C9AF79D4FFD796FFF9D59AFFDDD4BFFFCCD7DDFFC3D9EBFFC3D9ECFFCAD7
+          DFFFD5D4CAFFD7D7D7FFD4D2CDFFD8C9ADE4B0ABA0BA9B9A9A9D989898996969
+          6970C6C6C6F2D7D7D7FA1616161B000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          000003020203695D4870C1D6E5FEC0DBF2FFC0DBF2FFC0DBF2FFC0DBF2FFC0DB
+          F2FFC0DBF2FFCFDAE3FDD8D8D8FFC1C1C1E87F7F7F947474748281818195C3C3
+          C3ECDBDBDBFF7979798A00000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          000000000000000000007B8EA0A9B8D7F1FFB8D7F1FFB8D7F1FFB8D7F1FFB8D7
+          F1FFB7D5EFFD343B42468D8D8DA1DFDFDFFEDADADAFFD7D7D7FFDBDBDBFFE0E0
+          E0FE858585960303030300000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          00000000000000000000272E3538B0D2EFFFB6D6F0FFCDE2F5FFCDE2F5FFB5D5
+          F0FF829BAFBC00000000000000002E2E2E36777777858E8E8E9D747474822929
+          2930000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000010101B0CBE3EFDEECF8FFE1EEF9FFE1EEF9FFDCEB
+          F8FF6E7D8B910000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          000000000000000000004F565C5FD5E6F4FDD7E8F7FFD7E8F7FFD7E8F7FFD7E8
+          F7FFCEE0EDF633373B3D00000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000C0D0F0FC3D6E9F2CDE2F5FFCDE2F5FFCDE2F5FFCDE2F5FFCDE2
+          F5FFCDE2F5FFBACDDEE706070808000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          000000000000515C666BC2DCF3FFC2DCF3FFC2DCF3FFC2DCF3FFC2DCF3FFC2DC
+          F3FFC2DCF3FFC2DCF3FF353D434A000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          00000000000091AABFCDB7D6F1FFB7D6F1FFB7D6F1FFB7D6F1FFB7D6F1FFB7D6
+          F1FFB7D6F1FFB7D6F1FF6F8195DB010102080000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          000011172045ACCFEDFFADD1EFFFADD1EFFFADD1EFFFADD1EFFFADD1EFFFADD1
+          EFFFADD1EFFFADD1EFFF819BB6FF10131B660000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000324259B2A3CBEDFFA3CBEDFFA3CBEDFFA3CBEDFFA3CBEDFFA3CBEDFFA3CB
+          EDFFA3CBEDFFA3CBEDFF7592B0FF202837CA0000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000203
+          040C3B5070F999C4EBFF99C4EBFF99C4EBFF99C4EBFF99C4EBFF99C4EBFF99C4
+          EBFF99C4EBFF98C3E9FF4D6381FF2A3348FE0304061700000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000B10
+          183E314465FF7FAAD4FF8FBEE9FF8FBEE9FF8FBEE9FF8EBEE9FF87B4DFFF83AE
+          DAFF7AA1CDFF526A8EFF2B354CFF2B344BFF0C0F154800000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000F14
+          1E51304363FF40577BFF739ECBFF84B8E6FF80B2E0FF547095FF364560FF2F3B
+          53FF2B364DFF2B364DFF2B364DFF2B364DFF0F131B5D00000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          000000000000000000000000000000000000000000000000000000000000090D
+          143430415FFF304362FF31415EFF55739AFF43597AFF2C374FFF2C374FFF2C37
+          4FFF2C374FFF2C374FFF2C374FFF2B364EFF0D10174D00000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          000128354ACE304262FF2D3B55FF2A3349FF2C3851FF2C3851FF2C3851FF2C38
+          51FF2C3851FF2C3851FF2C3851FF2B364DF50304061300000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000080B0F29323E56EA2D3A54FF2A3248FF2D3953FF2D3953FF2D3953FF2D39
+          53FF2D3953FF2D3953FF323D54FE141821650000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          00000000000006080B1F293141B9353D51FF2F3D56FF2D3B55FF2D3B55FF2D3B
+          55FF344159FF313D50E110141B4F000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000090A0E31212732812D3747B52E3949BF2A32
+          42A9151A225B0101020600000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000}
+        Caption = 'CLIENTE'
+        OnClick = CLIENTE1Click
+      end
+      object N1: TMenuItem
+        Caption = '-'
+      end
+      object CATEGORIA1: TMenuItem
+        Caption = 'CATEGORIA'
+        OnClick = CATEGORIA1Click
+      end
+      object PRODUTO1: TMenuItem
+        Caption = 'PRODUTO'
+        OnClick = PRODUTO1Click
+      end
+      object N2: TMenuItem
+        Caption = '-'
+      end
+      object USURIO1: TMenuItem
+        Caption = 'USU'#193'RIO'
+        OnClick = USURIO1Click
+      end
+      object AOACESSO1: TMenuItem
+        Caption = 'A'#199#195'O ACESSO'
+        OnClick = AOACESSO1Click
+      end
+      object N7: TMenuItem
+        Caption = '-'
+      end
+      object USURIOSVSAES1: TMenuItem
+        Caption = 'USU'#193'RIOS VS A'#199#213'ES'
+        OnClick = USURIOSVSAES1Click
+      end
+      object N6: TMenuItem
+        Caption = '-'
+      end
+      object ALTERARSENHA1: TMenuItem
+        Caption = 'ALTERAR SENHA'
+        OnClick = ALTERARSENHA1Click
+      end
+      object N5: TMenuItem
+        Caption = '-'
+      end
+      object mnuFechar: TMenuItem
+        Caption = 'FECHAR'
+        OnClick = mnuFecharClick
+      end
+    end
+    object N8: TMenuItem
+      Caption = '|'
+    end
+    object MOVIMENTAO1: TMenuItem
+      Caption = 'MOVIMENTA'#199#195'O'
+      object VENDA1: TMenuItem
+        Caption = 'VENDA'
+        OnClick = VENDA1Click
+      end
+    end
+    object N9: TMenuItem
+      Caption = '|'
+    end
+    object RELATRIOS1: TMenuItem
+      Caption = 'RELAT'#211'RIOS'
+      object CATEGORIA2: TMenuItem
+        Caption = 'CATEGORIA'
+        OnClick = CATEGORIA2Click
+      end
+      object CLIENTE2: TMenuItem
+        Caption = 'CLIENTE'
+        OnClick = CLIENTE2Click
+      end
+      object FICHADECLIENTE1: TMenuItem
+        Caption = 'FICHA DE CLIENTE'
+        OnClick = FICHADECLIENTE1Click
+      end
+      object N3: TMenuItem
+        Caption = '-'
+      end
+      object PRODUTO2: TMenuItem
+        Caption = 'PRODUTO'
+        OnClick = PRODUTO2Click
+      end
+      object PRODUTOSPORCATEGORIA1: TMenuItem
+        Caption = 'PRODUTOS POR CATEGORIA'
+        OnClick = PRODUTOSPORCATEGORIA1Click
+      end
+      object N4: TMenuItem
+        Caption = '-'
+      end
+      object VENDAPORDATA1: TMenuItem
+        Caption = 'VENDA POR DATA'
+        OnClick = VENDAPORDATA1Click
+      end
+    end
+    object N10: TMenuItem
+      Caption = '|'
+    end
+    object SAIR1: TMenuItem
+      Caption = 'SAIR'
+      OnClick = SAIR1Click
+    end
+  end
+  object tmrAtualizacaoDashBoard: TTimer
+    Interval = 60000
+    OnTimer = tmrAtualizacaoDashBoardTimer
+    Left = 848
+    Top = 8
+  end
+end
